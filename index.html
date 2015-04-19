@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script src="http://autobahn.s3.amazonaws.com/js/autobahn.min.js"></script>
+        <script type="text/javascript">
+             try {
+                    var sock = new WebSocket("ws://localhost:8080/ws");
+                    //sock.binaryType = 'blob'; // can set it to 'blob' or 'arraybuffer 
+                    console.log("Websocket - status: " + sock.readyState);
+                    sock.onopen = function(m) { 
+                        console.log("CONNECTION opened..." + this.readyState);
+                    }
+                    
+                    sock.onmessage = function(m) { 
+                        console.log("message: " + m.data);
+                    }
+                    
+                    sock.onerror = function(m) {
+                        console.log("Error occured sending..." + m.data);
+                    }
+
+                    sock.onclose = function(m) { 
+                        console.log("Disconnected - status " + this.readyState);
+                    }
+            } catch(exception) {
+                    console.log(exception);
+            }
+        </script>
+    </head>
+</html>

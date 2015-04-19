@@ -1,0 +1,5 @@
+ws:
+    address: :8080
+zmq:
+    address: tcp://127.0.0.1:5563
+    subject: message
